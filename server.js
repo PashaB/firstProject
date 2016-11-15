@@ -8,10 +8,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine','ejs')
 
 const MongoClient = require('mongodb').MongoClient
+const env = require('./env')
 
 var db
 
-MongoClient.connect('mongodb://@ds047146.mlab.com:47146/yoda-quotes', (err, database) => {
+MongoClient.connect('mongodb://'+env.username+':'+env.password+'@ds047146.mlab.com:47146/yoda-quotes', (err, database) => {
 
 	if (err) return console.log(err)
 	db = database
